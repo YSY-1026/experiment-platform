@@ -1187,14 +1187,16 @@ def main():
     patch_streamlit_for_kids()
 
     # Display title based on mode
-    if app_mode == "Professional":
-        st.title("🧬 Online Molecular Biology Experiment Animation Simulation System")
-        st.markdown("### ATRA Engineered Bacteria Construction and Liver Cancer Treatment Research Simulation")
-        # 在Streamlit代码中修改为：
-        video_url = "https://github.com/YSY-1026/experiment-platform/releases/download/v1.0.0/pro.mp4"
-        st.video(video_url)
-        module_options = ["Background Introduction", "Basic Laboratory Procedures", "Engineered Bacteria Construction",
-                          "CRISPR-Cas9 Gene Integration", "Results Analysis"]
+  # 在 main() 函数中找到视频播放部分，修改为：
+if app_mode == "Professional":
+    st.title("🧬 Online Molecular Biology Experiment Animation Simulation System")
+    st.markdown("### ATRA Engineered Bacteria Construction and Liver Cancer Treatment Research Simulation")
+    
+    # 使用 GitHub Releases 链接 - 更新为正确的文件名
+    video_url = "https://github.com/YSY-1026/experiment-platform/releases/download/w/LBMediaPreparationAnimation.mp4"
+    st.video(video_url)
+    
+    module_options = ["Background Introduction", "Basic Laboratory Procedures", "Engineered Bacteria Construction", "CRISPR-Cas9 Gene Integration", "Results Analysis"]
     else:
         st.title("Little Biology Lab")
         st.markdown("### Fun and Simple Experiment Animations")
@@ -2907,4 +2909,5 @@ if __name__ == "__main__":
 
     if 'app_mode' not in st.session_state:
         st.session_state.app_mode = "Professional"
+
     main()
