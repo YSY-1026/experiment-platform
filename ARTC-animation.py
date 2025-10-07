@@ -1179,34 +1179,31 @@ def create_gel_electrophoresis_animation():
     return fig, animate
 
 
+import streamlit as st
+
 def main():
-    # Version switching: Professional / Kids (keep it simple to reduce errors)
+    # 版本选择
     if 'app_mode' not in st.session_state:
         st.session_state.app_mode = "Professional"
+    
     app_mode = st.sidebar.radio("Select Version", ["Professional", "Kids"], key="app_mode")
-    patch_streamlit_for_kids()
-
-    # Display title based on mode
-  # 在 main() 函数中找到视频播放部分，修改为：
-if app_mode == "Professional":
-    st.title("🧬 Online Molecular Biology Experiment Animation Simulation System")
-    st.markdown("### ATRA Engineered Bacteria Construction and Liver Cancer Treatment Research Simulation")
     
-    # 使用 GitHub Releases 链接 - 更新为正确的文件名
-    video_url = "https://github.com/YSY-1026/experiment-platform/releases/download/w/LBMediaPreparationAnimation.mp4"
-    st.video(video_url)
-    
-    module_options = ["Background Introduction", "Basic Laboratory Procedures", "Engineered Bacteria Construction", "CRISPR-Cas9 Gene Integration", "Results Analysis"]
+    # 显示标题
+    if app_mode == "Professional":
+        st.title("🧬 Online Molecular Biology Experiment Animation Simulation System")
+        st.markdown("### ATRA Engineered Bacteria Construction and Liver Cancer Treatment Research Simulation")
+        
+        # 使用 GitHub Releases 中的视频 - 正确文件名
+        video_url = "https://github.com/YSY-1026/experiment-platform/releases/download/w/LBMediaPreparationAnimation.mp4"
+        st.video(video_url)
+        
+        module_options = ["Background Introduction", "Basic Laboratory Procedures", "Engineered Bacteria Construction", "CRISPR-Cas9 Gene Integration", "Results Analysis"]
     else:
-        st.title("Little Biology Lab")
-        st.markdown("### Fun and Simple Experiment Animations")
-        st.markdown("""
-            <p style='font-size:20px; color: #1E90FF; font-weight:bold;'>
-            If you're interested in this, you can click 
-            <a href='https://2025.igem.wiki/syphu-china/education' target='_blank'>here</a> to learn more!
-            </p>""", unsafe_allow_html=True)
-        module_options = ["Background Introduction", "Basic Laboratory Procedures", "Engineered Bacteria Construction",
-                          "CRISPR-Cas9 Gene Integration", "Results Analysis"]
+        st.title("🔬 Little Biology Lab")
+        st.markdown("### Fun and Simple Experiment Simulations")
+        module_options = ["Story Time", "Lab Steps", "Bacteria Building", "DNA Scissors", "Results Show"]
+    
+    # 其他代码保持不变...
 
     # Sidebar navigation
     experiment_type = st.sidebar.selectbox(
@@ -2911,3 +2908,4 @@ if __name__ == "__main__":
         st.session_state.app_mode = "Professional"
 
     main()
+
